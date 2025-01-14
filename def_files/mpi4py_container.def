@@ -1,0 +1,17 @@
+Bootstrap: docker
+From: python:3.12-slim
+
+%post
+    # Update and install necessary tools
+    apt-get update && apt-get install -y python3-pip
+    apt-get install -y libopenmpi-dev
+
+    python3 -m venv env
+    ./env/bin/activate
+    pip3 install -r requirements.txt
+
+%environment
+    # Set the PYTHONUSERBASE for runtime
+    export PYTHONUSERBASE=/opt/python-packages
+    export PATH=/opt/python-packages/bin:$PATH
+    export PYTHONPATH=/opt/python-packages/lib/python3.12/site-packages:$PYTHONPATH

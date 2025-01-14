@@ -14,4 +14,4 @@ RUN pip3 install mpi4py
 RUN pip3 install numpy
 
 
-CMD ["python3", "main.py"]
+CMD ["python3", "test.py"]
